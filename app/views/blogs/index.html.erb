@@ -1,0 +1,26 @@
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1>Myblog</h1>
+  <p>To choose from below blogs and to see more</p>
+  <%= link_to 'Create new blog', new_blog_path, class:text-warning %>
+</div>
+  
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-4"><% @blogs.each do |b| %>
+      <h3>主題:<%= b.title %></h3>
+      <p>作者:<%= b.author %></p>
+      <p>關於:<%= b.content %></p>
+    </div>
+    <% end %>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div>
+</div>
