@@ -6,21 +6,14 @@
   
 <div class="container mt-5">
   <div class="row">
-    <div class="col-sm-4"><% @blogs.each do |b| %>
-      <h3>主題:<%= b.title %></h3>
-      <p>作者:<%= b.author %></p>
-      <p>關於:<%= b.content %></p>
+    <div class="col-sm-4"><% @blogs.each do |blog| %>
+      <h3>Title: <%= blog.title %></h3>
+      <p>Author: <%= blog.author %></p>
+      <p>Content: <%= blog.content %></p>
+      <p><%= link_to 'Blog details', blog_path(blog.id), class:'text-warning' %></p>
+      <p><%= link_to 'Edit blog', edit_blog_path(blog) %></p>
+      <p><%= link_to 'Delete blog', blog_path(blog), method: 'delete', data: { confirm: 'Sure to delete blog?' } %></p>
     </div>
     <% end %>
-    <div class="col-sm-4">
-      <h3>Column 2</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Column 3</h3>        
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-    </div>
   </div>
 </div>
