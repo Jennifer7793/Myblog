@@ -1,0 +1,22 @@
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1>Edit blog</h1>
+</div>
+
+<%= form_for(@blog) do |f| %>
+<div class="container mt-3">
+  <h2>Edit your blog details</h2>
+    <div class="mb-3">
+      <%= f.label :author %>
+      <%= f.text_field :author, class:"form-control mt-3", placeholder:"I'm..." %>
+    </div>
+    <div class="mb-3 mt-3">
+      <%= f.label :title %>
+      <%= f.text_field :title, class:"form-control mt-3", placeholder:"Myblog" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :content %>
+      <%= f.text_area :content, class:"form-control mt-3", placeholder:"It's all about Myblog...." %>
+    </div>
+    <button type="submit" class="btn btn-primary">Edit</button>
+  <% end %>
+</div>
