@@ -1,0 +1,18 @@
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1>All articles</h1>
+  <p>Feel free to read and take away thoughts</p>
+  <%= link_to 'Write a new article', new_blog_article_path, class:'text-warning' %>
+</div>
+  
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-4"><% @articles.each do |article| %>
+      <h3><%= article.title %></h3>
+      <p>Author: <%= article.author %></p>
+      <p>Content: <%= article.content %></p>
+      <p><%= link_to 'Article details', blog_article_path(blog.id), class:'text-warning' %></p>
+      <p><%= link_to 'Delete article', blog_article_path(blog), method: 'delete', data: { confirm: 'Sure to delete blog?' } %></p>
+    </div>
+    <% end %>
+  </div>
+</div>

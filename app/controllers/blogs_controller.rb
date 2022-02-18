@@ -10,7 +10,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     if @blog.save
-      redirect_to blogs_path
+      redirect_to blog_articles_path
     else
       render :new
     end
@@ -27,7 +27,7 @@ class BlogsController < ApplicationController
   def update
     @blog = Blog.find_by(id:params[:id])
     if @blog.update(blog_params)
-      redirect_to blogs_path
+      redirect_to blog_article_path
     else
       render :edit
     end
