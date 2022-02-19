@@ -3,7 +3,7 @@
   <p><%= link_to 'See all my articles', blog_articles_path(@blog), class:'text-warning' %></p>
 </div>
 
-<%= form_for(@article, url: new_blog_article_path) do |f| %>
+<%= form_with model: [:blog, @article] do |f| %>
 <div class="container mt-3">
   <div class="mb-3 mt-3">
     <%= f.label :title %>
@@ -13,6 +13,6 @@
     <%= f.label :content %>
     <%= f.text_area :content, class:"form-control mt-3", placeholder:"Once upon a time...." %>
   </div>
-  <%= f.submit %>
+  <%= f.submit value='Post', class:"btn btn-primary my-2"%>
   <% end %>
 </div>

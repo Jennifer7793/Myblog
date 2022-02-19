@@ -9,10 +9,10 @@
   <div class="row">
     <div class="col-sm-4"><% @articles.each do |article| %>
       <h3><%= article.title %></h3>
-      <p>Author: <%= article.author %></p>
       <p>Content: <%= article.content %></p>
-      <p><%= link_to 'Article details', blog_article_path(blog.id), class:'text-warning' %></p>
-      <p><%= link_to 'Delete article', blog_article_path(blog), method: 'delete', data: { confirm: 'Sure to delete blog?' } %></p>
+      <p><%= link_to 'Article details', article_path(article), class:'text-warning' %></p>
+      <p><%= link_to 'Edit article', edit_article_path(article), class:'text-warning' %></p>
+      <p><%= link_to 'Delete article', article_path(article), method: 'delete', data: { confirm: 'Sure to delete article?' } %></p>
     </div>
     <% end %>
   </div>

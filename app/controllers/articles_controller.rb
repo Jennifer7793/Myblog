@@ -9,8 +9,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    blog = Blog.find_by(id:params[:id])
-    @article = blog.articles.build(article_params)
+    @blog = Blog.find_by(id:params[:blog_id])
+    @article = @blog.articles.create(article_params)
     if @article.save
       redirect_to blog_articles_path
     else
@@ -18,7 +18,12 @@ class ArticlesController < ApplicationController
     end
   end
   
+  def show
+    @article = Article.find_by(id:params[:id])
+  end
+
   def destroy
+    @blog = Blog.find_by(id:params[:blog_id])
     @article = Article.find_by(id:params[:id])
     @article.destroy
     redirect_to blog_articles_path
