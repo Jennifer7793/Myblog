@@ -11,8 +11,12 @@
       <p>Author: <%= blog.author %></p>
       <p>Content: <%= blog.content %></p>
       <p><%= link_to 'Blog details', blog_path(blog.id), class:'text-warning' %></p>
+      <% if policy(blog).edit? %>
       <p><%= link_to 'Edit blog', edit_blog_path(blog) %></p>
+      <% end %>
+      <% if policy(blog).destroy? %>
       <p><%= link_to 'Delete blog', blog_path(blog), method: 'delete', data: { confirm: 'Sure to delete blog?' } %></p>
+      <% end %>
     </div>
     <% end %>
   </div>
