@@ -17,8 +17,9 @@
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Myblog</h1>
-        <p class="lead text-muted">Myblog讓你建立多款部落格，收錄及分享您的文章、心得、生活記事等等</p>
+        <p class="lead text-muted">You can create one or more blogs, and post out articles in each blog.</p>
         <p>
+        <p><%= link_to 'Myblog', blogs_path %></p>
           <%= link_to '註冊', new_user_registration_path, class:"btn btn-secondary" %>
           <%= link_to '登入', new_user_session_path, class:"btn btn-primary my-2" %>
           <%= link_to '登出', destroy_user_session_path, method: 'delete', class:"btn btn-secondary my-2" %>
