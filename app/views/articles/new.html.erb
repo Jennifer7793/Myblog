@@ -13,6 +13,10 @@
     <%= f.label :content %>
     <%= f.text_area :content, class:"form-control mt-3", placeholder:"Once upon a time...." %>
   </div>
+  <div class="mb-3">
+    <%= f.label :publish %>
+    <%= f.text_field :publish, class:"form-control mt-3", placeholder:"Once upon a time...." %>
+  </div>
   <%= f.submit value='Post', class:"btn btn-primary my-2"%>
   <% end %>
 </div>
