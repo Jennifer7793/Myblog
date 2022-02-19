@@ -1,9 +1,8 @@
 <div class="container-fluid p-5 bg-primary text-white text-center">
   <h1>Edit article</h1>
-  <p><%= link_to 'See all my articles', blog_articles_path, class:'text-warning' %></p>
 </div>
 
-<%= form_with model: [:blog, @article] do |f| %>
+<%= form_with model: @article do |f| %>
 <div class="container mt-3">
   <div class="mb-3 mt-3">
     <%= f.label :title %>
@@ -12,6 +11,10 @@
   <div class="mb-3">
     <%= f.label :content %>
     <%= f.text_area :content, class:"form-control mt-3", placeholder:"Once upon a time...." %>
+  </div>
+  <div class="field">
+    <%= f.label :publish %><br />
+    <%= f.collection_radio_buttons :publish, Article.publishes, :first, :first %>
   </div>
   <%= f.submit value='Edit', class:"btn btn-primary my-2"%>
   <% end %>
