@@ -18,6 +18,7 @@ class BlogsController < ApplicationController
   
   def show
     @blog = Blog.find_by(id:params[:id])
+    @articles = Article.where(blog_id: params[:blog_id]).published
   end
 
   def edit
