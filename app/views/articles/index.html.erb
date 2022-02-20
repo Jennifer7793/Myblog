@@ -1,5 +1,6 @@
+<%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class:"my-2 d-flex flex-row-reverse" %>
 <div class="container-fluid p-5 bg-info text-white text-center">
-  <h1>All articles</h1>
+  <h1><%= @blog.title %></h1>
   <p>Feel free to read and take away thoughts</p>
   <%= link_to 'Back to blogs', blogs_path, class:'text-warning' %><br>
   <%= link_to 'Write a new article', new_blog_article_path, class:'text-warning' %>
