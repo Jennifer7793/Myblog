@@ -1,4 +1,6 @@
 class BlogsController < ApplicationController
+  before_action :find_blog, only: %i[show edit update destroy]
+
   def index
     @blogs = Blog.all
   end
@@ -17,17 +19,14 @@ class BlogsController < ApplicationController
   end
   
   def show
-    @blog = Blog.find_by(id:params[:id])
     @articles = Article.where(blog_id: params[:blog_id]).published
     @user = User.where("email LIKE ?", "%#{params[:search]}%")
   end
 
   def edit
-    @blog = Blog.find_by(id:params[:id])
   end
   
   def update
-    @blog = Blog.find_by(id:params[:id])
     if @blog.update(blog_params)
       redirect_to blogs_path
     else
@@ -36,7 +35,6 @@ class BlogsController < ApplicationController
   end
   
   def destroy
-    @blog = Blog.find_by(id:params[:id])
     @blog.destroy
     redirect_to blogs_path, notice: 'blog deleted!'
   end
@@ -46,6 +44,10 @@ class BlogsController < ApplicationController
   end
   
   private
+  def find_blog
+    @blog = Blog.find_by(id:params[:blog_id])
+  end
+
   def blog_params
     params.require(:blog).permit(:title, :content, :author)
   end
