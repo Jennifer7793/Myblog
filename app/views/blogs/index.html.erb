@@ -1,23 +1,20 @@
-<div class="container-fluid p-5 bg-primary text-white text-center">
+<div class="p-5 bg-primary text-white text-center">
   <h1>Myblog</h1>
   <p>To choose from below blogs and to see more</p>
+  <%= link_to 'sign out', destroy_user_session_path, method: 'delete', class:'text-warning' %><br>
   <%= link_to 'Create new blog', new_blog_path, class:'text-warning' %>
 </div>
-  
+
 <div class="container mt-5">
   <div class="row">
-    <% @blogs.each do |blog| %>
+  <% @blogs.each do |blog| %>
     <div class="col-sm-4">
       <h3><%= blog.title %></h3>
-      <p>Author: <%= blog.author %></p>
-      <p>Content: <%= blog.content %></p>
+      <p>By: <%= blog.author %></p>
+      <p><%= blog.content %></p>
       <p><%= link_to 'Blog details', blog_path(blog.id), class:'btn btn-outline-info' %></p>
-      <% if policy(blog).edit? %>
       <p><%= link_to 'Edit blog', edit_blog_path(blog), class:'text-info' %></p>
-      <% end %>
-      <% if policy(blog).destroy? %>
-      <p><%= link_to 'Delete blog', blog_path(blog), class:'text-danger', method: 'delete', data: { confirm: 'Sure to delete blog?' } %></p>
-      <% end %>
+      <p><%= link_to 'Delete blog', blog_path(blog), class:'text-danger', method: 'delete', data: { confirm: 'Sure to delete blog?' } %></p>   
     </div>
     <% end %>
   </div>

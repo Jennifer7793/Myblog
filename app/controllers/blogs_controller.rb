@@ -10,7 +10,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     if @blog.save
-      redirect_to blog_articles_path
+      redirect_to blogs_path
     else
       render :new
     end
@@ -19,6 +19,7 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find_by(id:params[:id])
     @articles = Article.where(blog_id: params[:blog_id]).published
+    @user = User.where("email LIKE ?", "%#{params[:search]}%")
   end
 
   def edit
@@ -28,7 +29,7 @@ class BlogsController < ApplicationController
   def update
     @blog = Blog.find_by(id:params[:id])
     if @blog.update(blog_params)
-      redirect_to blog_article_path
+      redirect_to blogs_path
     else
       render :edit
     end
@@ -38,6 +39,10 @@ class BlogsController < ApplicationController
     @blog = Blog.find_by(id:params[:id])
     @blog.destroy
     redirect_to blogs_path, notice: 'blog deleted!'
+  end
+
+  def search
+    @user = User.where("email LIKE ?", "%#{params[:search]}%")
   end
   
   private

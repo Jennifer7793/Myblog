@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   def index
+    @blog = Blog.find_by(id:params[:blog_id])
     @articles = Article.where(blog_id: params[:blog_id]).published
   end
 

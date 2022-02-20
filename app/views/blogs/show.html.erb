@@ -3,6 +3,12 @@
   <p><%= link_to 'Back to Myblog list', blogs_path, class:'text-warning' %></p>
   <p><%= link_to 'See all articles', blog_articles_path(@blog.id), class:'text-warning' %></p>
 </div>
+<div class="">
+  <p>Invite your friend to own this blog together</p>
+  <%= form_tag search_path, method: "get" do %>
+  <%= text_field_tag :search, params[:search], placeholder: 'please enter e-mail', class: 'form-controller' %>
+  <% end %>
+</div>
 
 <div class="container p-5 my-5 bg-lightgrey text-white">
   <h2><%= @blog.title %></h2>
