@@ -6,11 +6,14 @@ class BlogPolicy < ApplicationPolicy
   end
 
   def edit?
+    
   end
 
   def update?
+    
   end
     
   def destroy?
+  
   end
 end

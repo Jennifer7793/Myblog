@@ -1,0 +1,5 @@
+<% if @search_result %>
+  <% @search_result.each do |user| %>
+  <%= user.email %><span class="btn btn-outline-info">Add user</span>
+  <% end %>
+<% end %>

@@ -13,8 +13,12 @@
       <p>By: <%= blog.author %></p>
       <p><%= blog.content %></p>
       <p><%= link_to 'Blog details', blog_path(blog.id), class:'btn btn-outline-info' %></p>
+      <% if current_user.blogs.where(id: blog.id).present? %>
       <p><%= link_to 'Edit blog', edit_blog_path(blog), class:'text-info' %></p>
-      <p><%= link_to 'Delete blog', blog_path(blog), class:'text-danger', method: 'delete', data: { confirm: 'Sure to delete blog?' } %></p>   
+      <p><%= link_to 'Delete blog', blog_path(blog), class:'text-danger', method: 'delete', data: { confirm: 'Sure to delete blog?' } %></p>  
+      <% else %>
+      <%# %>
+      <% end %> 
     </div>
     <% end %>
   </div>

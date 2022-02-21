@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
-  before_action :find_blog, only: %i[show edit update destroy]
+  before_action :find_blog, only: %i[edit update destroy]
+  before_action :authenticate_user!
 
   def index
     @blogs = Blog.all
@@ -19,8 +20,13 @@ class BlogsController < ApplicationController
   end
   
   def show
+    @blog = Blog.find_by(id:params[:id])
     @articles = Article.where(blog_id: params[:blog_id]).published
-    @user = User.where("email LIKE ?", "%#{params[:search]}%")
+    if params[:search]
+    @search_result = User.where("email LIKE ?", "%#{params[:search]}%")
+    else
+      #
+    end 
   end
 
   def edit
@@ -35,7 +41,7 @@ class BlogsController < ApplicationController
   end
   
   def destroy
-    @blog.destroy
+    @blog.delete
     redirect_to blogs_path, notice: 'blog deleted!'
   end
 
@@ -45,10 +51,10 @@ class BlogsController < ApplicationController
   
   private
   def find_blog
-    @blog = Blog.find_by(id:params[:blog_id])
+    @blog = current_user.blogs.find_by(id:params[:id])
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :content, :author)
+    params.require(:blog).permit(:title, :content, :author, :user_id).merge(user_id: current_user.id)
   end
 end

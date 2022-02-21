@@ -3,7 +3,7 @@
   <p><%= link_to 'See all my articles', blog_articles_path(@blog), class:'text-warning' %></p>
 </div>
 
-<%= form_with model: [:blog, @article] do |f| %>
+<%= form_for ([:blog, @article]) do |f| %>
 <div class="container mt-3">
   <div class="mb-3 mt-3">
     <%= f.label :title %>

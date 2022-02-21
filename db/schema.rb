@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_19_131945) do
+ActiveRecord::Schema.define(version: 2022_02_21_081731) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2022_02_19_131945) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "blog_id"
-    t.integer "publish", default: 0
+    t.integer "publish"
     t.index ["blog_id"], name: "index_articles_on_blog_id"
   end
 
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2022_02_19_131945) do
     t.integer "blog_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["blog_id"], name: "index_user_blogs_on_blog_id"
+    t.index ["user_id"], name: "index_user_blogs_on_user_id"
 
   end
 
