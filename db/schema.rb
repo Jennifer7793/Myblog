@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 2022_02_20_165134) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "blog_id"
-    t.integer "publish", default: 0
     t.index ["blog_id"], name: "index_articles_on_blog_id"
   end
 

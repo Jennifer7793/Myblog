@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :find_article, only: %i[edit update show destroy]
   before_action :find_blog, only: %i[index new create destroy]
+  before_action :authenticate_user!
 
   def index
     @articles = Article.where(blog_id: params[:blog_id]).published
