@@ -35,7 +35,7 @@ class BlogsController < ApplicationController
   end
   
   def destroy
-    @blog.destroy
+    @blog.delete
     redirect_to blogs_path, notice: 'blog deleted!'
   end
 
@@ -45,10 +45,10 @@ class BlogsController < ApplicationController
   
   private
   def find_blog
-    @blog = Blog.find_by(id:params[:blog_id])
+    @blog = Blog.find_by(id:params[:id])
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :content, :author)
+    params.require(:blog).permit(:title, :content, :author, :user_id).merge(user_id: current_user.id)
   end
 end
