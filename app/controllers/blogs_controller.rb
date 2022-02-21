@@ -22,7 +22,11 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find_by(id:params[:id])
     @articles = Article.where(blog_id: params[:blog_id]).published
-    @user = User.where("email LIKE ?", "%#{params[:search]}%")
+    if params[:search]
+    @search_result = User.where("email LIKE ?", "%#{params[:search]}%")
+    else
+      #
+    end 
   end
 
   def edit

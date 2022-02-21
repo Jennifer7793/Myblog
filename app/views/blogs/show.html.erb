@@ -5,9 +5,11 @@
 </div>
 <div class="">
   <p>Invite your friend to own this blog together</p>
-  <%= form_tag search_path, method: "get" do %>
+  <%= form_tag blog_path, method: "get" do %>
   <%= text_field_tag :search, params[:search], placeholder: 'please enter e-mail', class: 'form-controller' %>
+  <%= submit_tag "search", name: nil, class:'btn btn-info' %>
   <% end %>
+  <%= render 'shared/search_result' %>
 </div>
 
 <div class="container p-5 my-5 bg-lightgrey text-white">
