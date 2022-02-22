@@ -11,7 +11,7 @@ class BlogsController < ApplicationController
   end
   
   def create
-    @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.build(blog_params)
     if @blog.save
       redirect_to blogs_path
     else
@@ -50,6 +50,10 @@ class BlogsController < ApplicationController
   end
   
   private
+  def check_blog_user
+    current_user.blogs.where(id: blog.id).present?
+  end
+
   def find_blog
     @blog = current_user.blogs.find_by(id:params[:id])
   end
