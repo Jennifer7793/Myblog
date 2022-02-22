@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @articles = Article.where(blog_id: params[:blog_id]).published
+    if current_user.blog_ids.include?(params[:blog_id].to_i)
+      @articles = Article.all
+    else
+      @articles = Article.where(blog_id: params[:blog_id]).published
+    end
   end
 
   def new
