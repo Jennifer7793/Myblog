@@ -3,7 +3,7 @@
   <h1><%= @blog.title %></h1>
   <p>Feel free to read and take away thoughts</p>
   <%= link_to 'Back to blogs', blogs_path, class:'text-warning' %><br>
-  <% if can_edit?(params[:blog_id]) == true %>
+  <% if can_edit?(@blog.id) == true %>
   <%= link_to 'Write a new article', new_blog_article_path, class:'text-warning' %>
   <% end %>
 </div>
@@ -14,7 +14,7 @@
     <div class="col-sm-4">
       <h3><%= article.title %></h3>
       <p><%= article.content %></p>
-      <% if can_edit?(params[:blog_id]) == true %>
+      <% if can_edit?(@blog.id) == true %>
       <p><%= link_to 'Edit', edit_article_path(article), class:'text-info' %></p>
       <p><%= link_to 'Delete', article_path(article), class:'text-danger', method: 'delete', data: { confirm: 'Sure to delete article?' } %></p>
       <% end %>
