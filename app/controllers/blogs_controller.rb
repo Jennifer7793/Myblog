@@ -11,9 +11,10 @@ class BlogsController < ApplicationController
   end
   
   def create
-    @blog = current_user.blogs.build(blog_params)
+    @blog = Blog.new(blog_params)
     if @blog.save
-      redirect_to blogs_path
+      @blog.users << current_user
+      redirect_to blogs_path(@blog)
     else
       render :new
     end
@@ -59,6 +60,6 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :content, :author)
+    params.require(:blog).permit(:title, :content, :author).merge(user_id: current_user.id)
   end
 end

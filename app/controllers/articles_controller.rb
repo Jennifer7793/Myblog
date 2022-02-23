@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   def index
     if current_user.blog_ids.include?(params[:blog_id].to_i)
-      @articles = Article.all
+      @articles = Blog.find(params[:blog_id]).articles
     else
       @articles = Article.where(blog_id: params[:blog_id]).published
     end
