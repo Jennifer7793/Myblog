@@ -13,7 +13,9 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     if @blog.save
-      @blog.users << current_user
+      UserBlog.create(user: current_user,
+                      blog: @blog,
+                      role: "owner")
       redirect_to blogs_path(@blog)
     else
       render :new
@@ -31,6 +33,7 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    authorize @blog
   end
   
   def update
@@ -46,9 +49,9 @@ class BlogsController < ApplicationController
     redirect_to blogs_path, notice: 'blog deleted!'
   end
 
-  def search
-    @user = User.where("email LIKE ?", "%#{params[:search]}%")
-  end
+  # def search
+  #   @user = User.where("email LIKE ?", "%#{params[:search]}%")
+  # end
   
   private
   def check_blog_user

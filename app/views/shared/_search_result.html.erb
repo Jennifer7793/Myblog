@@ -1,5 +1,5 @@
 <% if @search_result %>
   <% @search_result.each do |user| %>
-  <%= user.email %><span class="btn btn-outline-info">Add user</span>
+  <%= user.email %><span class="btn btn-outline-info"><%= link_to "Add user", user_blog_path(request.parameters.merge({email: "#{user.email}"})), method: :post %></span>
   <% end %>
 <% end %>

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get "/search", to: "blogs#show"
   get "welcome/index"
   root to: "welcome#index"
+  # get "/user_blog", to: "user_blogs#change_role"
+  post "/user_blog", to: "user_blogs#change_role"
 end
