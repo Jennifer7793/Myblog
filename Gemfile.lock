@@ -158,6 +158,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.2.1)
+    rerun (0.13.1)
+      listen (~> 3.0)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -232,6 +234,7 @@ DEPENDENCIES
   pundit (~> 2.1.1)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.4)
+  rerun (~> 0.13.1)
   sass-rails (>= 6)
   selenium-webdriver
   spring
