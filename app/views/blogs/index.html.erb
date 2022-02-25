@@ -8,7 +8,7 @@
   <%= link_to 'Create new blog', new_blog_path, class:'btn btn-primary' %>
   <div class="row">
   <% @blogs.each do |blog| %>
-    <div class="col-sm-4">
+    <div class="col-sm-4 bg-light my-2 card">
       <h3><%= blog.title %></h3>
       <p>By: <%= blog.author %></p>
       <p><%= blog.content %></p>

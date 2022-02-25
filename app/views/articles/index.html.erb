@@ -11,7 +11,7 @@
 <div class="container mt-5">
   <div class="row">
     <% @articles.each do |article| %>
-    <div class="col-sm-4">
+    <div class="col-sm-4 bg-light my-2 card">
       <h3><%= article.title %></h3>
       <p><%= article.content %></p>
       <% if can_edit?(@blog.id) == true %>
