@@ -1,0 +1,8 @@
+<%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class:"my-2 d-flex flex-row-reverse" %>
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1><%= @article.title %></h1>
+  <p><%= link_to 'See all articles', blog_articles_path(@article.blog_id), class:'text-warning' %></p>
+</div>
+<div class="text-center container p-2 my-5 bg-lightgrey text-black">
+  <p><%= @article.content %></p>
+</div>

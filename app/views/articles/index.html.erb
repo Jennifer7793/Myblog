@@ -14,6 +14,7 @@
     <div class="col-sm-4 bg-light my-2 card">
       <h3><%= article.title %></h3>
       <p><%= article.content %></p>
+      <p><%= link_to 'Article details', article_path(article.id), class:'btn btn-outline-info' %></p>
       <% if can_edit?(@blog.id) == true %>
       <p><%= link_to 'Edit', edit_article_path(article), class:'text-info' %></p>
       <p><%= link_to 'Delete', article_path(article), class:'text-danger', method: 'delete', data: { confirm: 'Sure to delete article?' } %></p>
