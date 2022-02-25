@@ -1,6 +1,13 @@
 h1 {  
   text-decoration: green wavy underline;  
   }  
-  
+
+h2 {
+  text-decoration: blue wavy underline;  
+  }
+
+a {
+  text-decoration: none;
+  }
 // Import Bootstrap v5  
 @import "~bootstrap/scss/bootstrap";  
