@@ -3,7 +3,7 @@ class UserBlogsController < ApplicationController
     user_email = params[:email]
     @user = User.find_by(email: user_email)
     user_blog = @user.user_blogs.where(blog_id: params[:id])
-    if user_blog.length != 0 
+    if user_blog.present?
       redirect_to blog_path(params[:id])
       flash.alert = "The user already owned this blog"
     else
