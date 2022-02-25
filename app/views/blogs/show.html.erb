@@ -4,7 +4,7 @@
   <p><%= link_to 'Back to Myblog list', blogs_path, class:'text-warning' %></p>
   <p><%= link_to 'See all articles', blog_articles_path(@blog.id), class:'text-warning' %></p>
 </div>
-<div>
+<div class="text-center container">
 <% if can_edit?(@blog.id) == true %>
   <p>Invite your friend to own this blog together</p>
   <%= form_tag blog_path, method: "get" do %>
